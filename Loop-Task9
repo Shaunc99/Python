@@ -1,0 +1,2 @@
+# Task 9: Power Calculation
+# Implement a program that calculates the result of raising a given base to a given exponent using a loop. Avoid using the built-in ** operator or the pow() function.
