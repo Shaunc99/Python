@@ -1,0 +1,2 @@
+# Task 8: Count Characters
+# Write a program that takes a string input from the user and counts the number of occurrences of each character in the string using a loop. Print out each character along with its count.
