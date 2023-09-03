@@ -1,2 +1,15 @@
-#Task 2: Multiplication Table
-#Create a program that takes an integer input from the user and prints the multiplication table for that number from 1 to 10 using a loop.
+# Task 2: Multiplication Table
+# Create a program that takes an integer input from the user and prints the
+# multiplication table for that number from 1 to 10 using a loop.
+n = int(input("Type the number you want to print the multiplication table for:"))
+
+
+def multiplication_table():
+    multiple = 0
+    for i in range(10):
+        multiple += 1
+        number = n * multiple
+        print(n, "x", multiple, "=", number)
+
+
+multiplication_table()

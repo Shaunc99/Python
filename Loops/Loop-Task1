@@ -1,2 +1,18 @@
-Task 1: Sum of Even Numbers
-Write a Python program that calculates the sum of all even numbers between 1 and a user-specified upper limit using a loop.
+# Task 1: Sum of Even Numbers
+# Write a Python program that calculates the sum of all even numbers between 1
+# and a user-specified upper limit using a loop.
+limit = int(input("Type your number limit here:"))
+
+
+def sum_of_even_numbers():
+    number = 0
+    sum_number = 0
+    for i in range(limit):
+        number += 1
+        if number % 2 == 0:
+            print(number)
+            sum_number += number
+    print(sum_number)
+
+
+sum_of_even_numbers()
