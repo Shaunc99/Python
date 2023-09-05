@@ -1,0 +1,21 @@
+# Task 3: Factorial Calculation
+# Write a program to calculate the factorial of a given positive integer using a loop.
+# Make sure to handle the case of 0 and 1 appropriately.
+
+
+
+def factorial_calculator(number):
+    factorial = number
+    multiple = number
+    for i in range(number - 1):
+        if number == 1 or number == 0:
+            print("Sorry, but you cannot create factorials with the number 1 or 0.")
+            break
+        multiple -= 1
+        factorial *= multiple
+    print("The factorial is", factorial)
+
+
+factorial_number = int(input("Type a positive integer:"))
+
+factorial_calculator(factorial_number)
