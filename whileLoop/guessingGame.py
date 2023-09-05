@@ -14,3 +14,9 @@
 # You can use Python's random module to generate random numbers.
 
 # Hint: You can use a variable to keep track of the number of remaining chances and update it in each iteration of the loop.
+
+import random;
+
+random_number = random.randint(1,100)
+
+print(random_number)
