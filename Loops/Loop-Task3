@@ -3,7 +3,6 @@
 # Make sure to handle the case of 0 and 1 appropriately.
 
 
-
 def factorial_calculator(number):
     factorial = number
     multiple = number
