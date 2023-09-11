@@ -17,3 +17,14 @@ def find_largest_element(input_list):
 
 find_largest_element([5, 7, 2, 4, 1, 9, 4, 12, 4, 3, 11])
 find_largest_element([15, 13, 14, 5, 8, 3])
+
+# Optimum Solution
+
+def findLargestElement(inputList):
+    largestElement = -1
+    for i in inputList:
+        if(i>largestElement):
+            largestElement=i
+    return largestElement
+
+print(findLargestElement([12,5,1,78,32,122]))
