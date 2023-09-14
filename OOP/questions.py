@@ -23,13 +23,15 @@ cardDatabase = [{'accountNumber': 987, 'bankBalance': 7000},
                 {'accountNumber': 487, 'bankBalance': 100},{'accountNumber': 227, 'bankBalance': 100000},{'accountNumber': 187, 'bankBalance': 6700}
                 ]
 
+# 
+
 class Bank:
     def __init__(self, cardDB):
         self.cardDatabase = cardDB
         self.userChoiceNumber = 0
 
     def userChoice(self):
-        self.userChoiceNumber = int(input("What do you wanna do? 1: Deposit, 2: Withdraw, 3: Transfer, 4: Balance Check, 5: Exit"))
+        self.userChoiceNumber = int(input("What do you wanna do?\n1: Deposit,\n2: Withdraw,\n3: Transfer,\n4: Balance Check,\n5: Exit\nEnter here: "))
         if self.userChoiceNumber == 1:
             self.cashDeposit()
         elif self.userChoiceNumber == 2:
@@ -39,19 +41,31 @@ class Bank:
         elif self.userChoiceNumber == 5:
             print("Exiting...")
             return -1
+        else:
+            print("\nYou entered the wrong input, please try again.\n")
+            self.userChoice()
 
     def cashWithdraw(self):
         userAccountNumber = int(input("What is your Account Number: "))
-        for i in self.cardDatabase:
-            if(i['accountNumber'] == userAccountNumber):
+        # for 
+        for i in range(0,len(self.cardDatabase)):
+            print(i)
+            if(self.cardDatabase[i]['accountNumber'] == userAccountNumber):
+                print("The account number matched")
                 userAmount = int(input("How much do you want to withdraw: "))
-                if(userAmount<=i['bankBalance']):
+                if(userAmount<=self.cardDatabase[i]['bankBalance']):
                     # Memory References
-                    i['bankBalance']-= userAmount
-                    print(f"You have successfully withdrawn ${userAmount}. Remaining Amount: ${i['bankBalance']}")
+                    self.cardDatabase[i]['bankBalance']-= userAmount
+                    print(f"You have successfully withdrawn ${userAmount}. Remaining Amount: ${self.cardDatabase[i]['bankBalance']}")
                 else:
                     print ("You do not enough money to withdraw")
                     break
+
+            # print(i == len(self.cardDatabase)-1)
+            if (i == len(self.cardDatabase)-1):
+                print("The account number didn't matched")
+                print("\nYour account doesn't match with our database, please try again.\n")
+                self.cashWithdraw()
         return -1
 
     def cashDeposit(self):
@@ -63,7 +77,7 @@ class Bank:
                 print(f"You have successfully withdrawn ${userAmount}. Remaining Amount: ${i['bankBalance']}")
             else:
                 print ("Your account number does not match our database.")
-                break
+                # break
 
     def balanceCheck(self):
         userAccountNumber = int(input("What is your Account Number: "))
