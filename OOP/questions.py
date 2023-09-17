@@ -31,7 +31,7 @@ class Bank:
         self.userChoiceNumber = 0
 
     def userChoice(self):
-        self.userChoiceNumber = int(input("What do you wanna do?\n1: Deposit,\n2: Withdraw,\n3: Transfer,\n4: Balance Check,\n5: Exit\nEnter here: "))
+        self.userChoiceNumber = int(input("What do you want to do?\n1: Deposit,\n2: Withdraw,\n3: Transfer,\n4: Balance Check,\n5: Exit\n\nEnter here: "))
         if self.userChoiceNumber == 1:
             self.cashDeposit()
         elif self.userChoiceNumber == 2:
@@ -46,10 +46,9 @@ class Bank:
             self.userChoice()
 
     def cashWithdraw(self):
-        userAccountNumber = int(input("What is your Account Number: "))
+        userAccountNumber = int(input("\nEnter your Account Number: "))
         # for 
         for i in range(0,len(self.cardDatabase)):
-            print(i)
             if(self.cardDatabase[i]['accountNumber'] == userAccountNumber):
                 print("The account number matched")
                 userAmount = int(input("How much do you want to withdraw: "))
@@ -57,33 +56,44 @@ class Bank:
                     # Memory References
                     self.cardDatabase[i]['bankBalance']-= userAmount
                     print(f"You have successfully withdrawn ${userAmount}. Remaining Amount: ${self.cardDatabase[i]['bankBalance']}")
+                    break
                 else:
-                    print ("You do not enough money to withdraw")
+                    print("You do not enough money to withdraw, please try again.")
+                    self.cashWithdraw()
                     break
 
             # print(i == len(self.cardDatabase)-1)
             if (i == len(self.cardDatabase)-1):
-                print("The account number didn't matched")
                 print("\nYour account doesn't match with our database, please try again.\n")
                 self.cashWithdraw()
         return -1
 
     def cashDeposit(self):
         userAccountNumber = int(input("What is your Account Number: "))
-        for i in self.cardDatabase:
-            if(i['accountNumber'] == userAccountNumber):
-                userAmount = int(input("How much money do you want to deposit: "))
-                i['bankBalance']+= userAmount
-                print(f"You have successfully withdrawn ${userAmount}. Remaining Amount: ${i['bankBalance']}")
-            else:
-                print ("Your account number does not match our database.")
-                # break
-
+        for i in range(0,len(self.cardDatabase)):
+            if self.cardDatabase[i]['accountNumber'] == userAccountNumber:
+                print("Your account number matches with our database, processing...")
+                userAmount = int(input("How much do you want to Deposit: "))
+                self.cardDatabase[i]['bankBalance'] += userAmount
+                print(f"You have successfully deposited ${userAmount}. Remaining Amount: ${self.cardDatabase[i]['bankBalance']}")
+                break
+            # print(i == len(self.cardDatabase)-1)
+            if i == len(self.cardDatabase)-1:
+                print("\nYour account doesn't match with our database, please try again.\n")
+                self.cashDeposit()
+        return -1
     def balanceCheck(self):
         userAccountNumber = int(input("What is your Account Number: "))
-        for i in self.cardDatabase:
-            if(i['accountNumber'] == userAccountNumber):
-                print(f"Your account has ${i['bankBalance']}")
+        for i in range(0,len(self.cardDatabase)):
+            if self.cardDatabase[i]['accountNumber'] == userAccountNumber:
+                print("Your account number matches with our database, processing...")
+                print(f"Your account has ${self.cardDatabase[i]['bankBalance']}")
+                break
+            # print(i == len(self.cardDatabase)-1)
+            if i == len(self.cardDatabase)-1:
+                print("\nYour account doesn't match with our database, please try again.\n")
+                self.balanceCheck()
+        return -1
     
 
 bankObj = Bank(cardDatabase)
