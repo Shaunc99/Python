@@ -15,3 +15,26 @@
 # Create an Eagle class that inherits from Birds. Eagles can fly at a high altitude.
 # Create a Shark class that inherits from Fish. Sharks are excellent swimmers.
 # Finally, create instances of each of these animal classes and demonstrate their properties and behaviors.
+
+class Mammal:
+    def __init__(self,name):
+        self.name = name
+
+    def makeSound(self):
+        print("Running for the mammal who didn't provide the makeSound Function")
+
+class Lion(Mammal):
+    def __init__(self, name):
+        super().__init__(name)
+
+    def makeSound(self):
+        print(self.name, " makes Roar sound")
+
+class Deer(Mammal):
+    def __init__(self, name):
+        super().__init__(name)
+    
+
+deerObj = Deer("Deer")
+
+deerObj.makeSound()
