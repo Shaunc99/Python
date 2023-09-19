@@ -1,0 +1,1 @@
+# Build a class hierarchy for geometric shapes. Create a base class Shape with common attributes like area and perimeter. Then, create subclasses for specific shapes such as Circle, Rectangle, Triangle, and Square. Implement methods to calculate their respective areas and perimeters. Add a method to compare the shapes based on area.
